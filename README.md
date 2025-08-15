@@ -14,4 +14,4 @@ Spots is a social media platform for anyone who would like to post pictures and 
 
 This webpage is deployed on github pages
 
-_link_
+- [Deployment Link](https://thewarriors666.github.io/se_project_spots)
