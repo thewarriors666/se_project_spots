@@ -22,7 +22,8 @@
 .profile__name {
   margin: 0 0 12px;
   font-weight: 500;
-  display: -webkit-box;
+  line-height: 100%;
+  font-size: 32px;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
@@ -31,8 +32,9 @@
 }
 
 .profile__description {
+  font-size: 16px;
+  line-height: 100%;
   margin: 0;
-  display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
@@ -93,7 +95,6 @@
     font-size: 20px;
     margin: 0 0 6px;
     max-width: 288px;
-    display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 3;

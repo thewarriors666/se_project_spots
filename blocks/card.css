@@ -7,12 +7,18 @@
 }
 
 .card__content {
+  margin-top: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .card__title {
+  max-width: 350px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 120%;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -38,7 +44,8 @@
   }
 
   .card__title {
-    display: -webkit-box;
+    max-width: 250px;
+    font-size: 16px;
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 3;
