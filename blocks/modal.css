@@ -1,0 +1,123 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  background-color: #00000080;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+}
+
+.modal_is-opened {
+  visibility: visible;
+}
+
+.modal__container {
+  max-width: 730px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 32px 50px;
+  position: relative;
+}
+
+.modal__close-btn {
+  position: absolute;
+  top: 32px;
+  right: 50px;
+  width: 40px;
+  height: 40px;
+  opacity: 40%;
+  background-color: #ffffff7b;
+  border-style: none;
+}
+
+.modal__close-btn:hover {
+  cursor: pointer;
+  opacity: 100%;
+}
+
+.modal__title {
+  margin: 0 0 32px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__input {
+  display: block;
+  border-color: #21212166;
+  border-radius: 8px;
+  border: 1px solid #21212166;
+  padding: 16px 0;
+  width: 100%;
+  margin: 8px 0 0;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 500;
+}
+
+.modal__label {
+  margin: 0 0 32px;
+}
+
+.modal__submit-btn {
+  width: 156px;
+  height: 52px;
+  background-color: black;
+  color: #fcf5e5;
+  border-radius: 8px;
+}
+
+.modal__input::placeholder {
+  color: #2121214d;
+  padding-left: 12px;
+}
+
+@media screen and (max-width: 627px) {
+  .modal__title {
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  .modal__container {
+    padding: 24px 12px 12px 12px;
+  }
+
+  .modal__input::placeholder {
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  .modal__submit-btn {
+    width: 100%;
+  }
+
+  .modal__label {
+    margin: 0 0 24px;
+  }
+
+  .modal__input {
+    padding: 8px 0;
+  }
+
+  .modal__close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+}
