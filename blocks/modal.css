@@ -90,14 +90,11 @@
   border: none;
 }
 
-<<<<<<< HEAD
-=======
 .modal__submit-btn:hover {
   cursor: pointer;
   opacity: 80%;
 }
 
->>>>>>> 0710370 (fix js errors)
 .modal__input::placeholder {
   color: #2121214d;
   padding-left: 12px;
