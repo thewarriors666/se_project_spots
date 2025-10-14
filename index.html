@@ -42,11 +42,6 @@
                 <div class="card__content">
                   <h2 class="card__title"></h2>
                   <button type="button" class="card__like-btn"></button>
-                  <button
-                    type="button"
-                    class="card__like-btn"
-                    aria-label="Like card"
-                  ></button>
                 </div>
               </li>
             </template>
@@ -105,7 +100,7 @@
             <label for="profile-description-input" class="modal__label">
               Caption
               <input
-                id="profile-description-input"
+                id="card-caption-input"
                 type="text"
                 class="modal__input"
                 placeholder="Type a caption"
@@ -119,7 +114,10 @@
 
     <div class="modal modal_type_preview" id="preview-modal">
       <div class="modal__image-container">
-        <button type="button" class="modal__close-btn_type_preview">
+        <button
+          type="button"
+          class="modal__close-btn modal__close-btn_type_preview"
+        >
           <img src="./images/closebtn.svg" alt="close button" />
         </button>
         <img src="#" alt="" class="modal__image" />
