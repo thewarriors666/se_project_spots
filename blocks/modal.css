@@ -26,7 +26,6 @@
 
 .modal__close-btn {
   position: absolute;
-  padding-top: 32px;
   top: 32px;
   right: 50px;
   width: 40px;
@@ -38,12 +37,14 @@
 
 .modal__close-btn_type_preview {
   top: 0;
-  right: -52.5px;
+  right: -40.5px;
+  background: transparent;
+  opacity: 100;
 }
 
 .modal__close-btn:hover {
   cursor: pointer;
-  opacity: 100%;
+  opacity: 40%;
 }
 
 .modal__title {
@@ -61,9 +62,9 @@
 }
 
 .modal__container {
+  box-sizing: border-box;
   background-color: #ffffff;
   width: 730px;
-  height: 408px;
   border-radius: 8px;
   padding: 32px 50px 32px 50px;
   position: relative;
@@ -125,6 +126,15 @@
 
 .modal__caption {
   color: #ffff;
+  background-color: #212121;
+  padding: 4px 8px 4px 8px;
+  border-radius: 8px;
+  display: inline-block;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  line-height: 120%;
+  font-weight: 500;
+  letter-spacing: 0%;
 }
 
 @media screen and (max-width: 480px) {
