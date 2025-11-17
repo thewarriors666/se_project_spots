@@ -119,7 +119,7 @@ editProfileBtn.addEventListener("click", function () {
   resetValidation(
     editProfileForm,
     [editProfileNameInput, editProfileDescriptionInput],
-    { inactiveButtonClass: "modal__submit-btn_disabled" }
+    settings
   );
   openModal(editProfileModal);
 });
@@ -168,4 +168,13 @@ initialCards.forEach(function (item) {
     link: item.link,
   });
   cardsList.prepend(cardElement);
+});
+
+const modals = document.querySelectorAll(".modal");
+modals.forEach((modal) => {
+  modal.addEventListener("mousedown", (e) => {
+    if (e.target === modal) {
+      closeModal(modal);
+    }
+  });
 });
