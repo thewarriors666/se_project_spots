@@ -65,7 +65,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background-image: url(../images/Default\ delete.svg);
+  background-image: url(../images/Default-delete.svg);
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;
@@ -76,7 +76,7 @@
 .card__delete-btn:hover {
   opacity: 1;
   cursor: pointer;
-  background-image: url(../images/hover\ delete.svg);
+  background-image: url(../images/hover-delete.svg);
 }
 
 @media screen and (max-width: 627px) {
