@@ -46,13 +46,10 @@ const api = new Api({
 });
 
 api
-  .getInitialCards()
-  .then((cards) => {
-    cards.forEach(function (item) {
-      const cardElement = getCardElement({
-        name: item.name,
-        link: item.link,
-      });
+  .getAppInfo()
+  .then(([cards]) => {
+    cards.forEach((item) => {
+      const cardElement = getCardElement(item);
       cardsList.prepend(cardElement);
     });
   })
