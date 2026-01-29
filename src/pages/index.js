@@ -47,16 +47,18 @@ const api = new Api({
 
 api
   .getAppInfo()
-  .then(([cards]) => {
+  .then(([cards, userInfo]) => {
     cards.forEach((item) => {
       const cardElement = getCardElement(item);
       cardsList.prepend(cardElement);
     });
+    document.querySelector(".profile__avatar").src = userInfo.avatar;
+    profileNameEl.textContent = userInfo.name;
+    profileDescriptionEl.textContent = userInfo.description;
   })
   .catch(console.error);
 
 document.querySelector(".header__logo").src = logoImg;
-document.querySelector(".profile__avatar").src = avatarImg;
 document.querySelector(".profile__pencilImg").src = pencilImg;
 document.querySelector(".profile__add-btn").src = plusImg;
 
@@ -173,9 +175,17 @@ previewModalCloseBtn.addEventListener("click", function () {
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
-  profileNameEl.textContent = editProfileNameInput.value;
-  profileDescriptionEl.textContent = editProfileDescriptionInput.value;
-  closeModal(editProfileModal);
+  api
+    .editUserInfo({
+      name: editProfileNameInput.value,
+      about: editProfileDescriptionInput.value,
+    })
+    .then((data) => {
+      profileNameEl.textContent = data.name;
+      profileDescriptionEl.textContent = data.description;
+      closeModal(editProfileModal);
+    })
+    .catch(console.error);
 }
 
 function handleNewPostSubmit(evt) {
