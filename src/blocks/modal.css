@@ -4,9 +4,11 @@
   align-items: center;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  transition:
+    visibility 0s linear 0.5s,
+    opacity 0.5s linear;
   background-color: #00000080;
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
@@ -26,12 +28,17 @@
 
 .modal__close-btn {
   position: absolute;
+  overflow: hidden;
+  text-overflow: ellipsis;
   top: 32px;
   right: 50px;
   width: 40px;
   height: 40px;
   background-color: #ffffff7b;
-  border-style: none;
+  background-image: url("../images/closebtn.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
 }
 
 .modal__close-btn_type_preview {
