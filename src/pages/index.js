@@ -20,16 +20,19 @@ const api = new Api({
   },
 });
 
+const avatarProfile = document.querySelector(".profile__avatar");
+
 api
   .getAppInfo()
-  .then(([cards, userInfo]) => {
+  .then(([cards, currentUser]) => {
+    userInfo = currentUser;
     cards.forEach((item) => {
       const cardElement = getCardElement(item);
       cardsList.prepend(cardElement);
     });
-    document.querySelector(".profile__avatar").src = userInfo.avatar;
-    profileNameEl.textContent = userInfo.name;
-    profileDescriptionEl.textContent = userInfo.about;
+    avatarProfile.src = currentUser.avatar;
+    profileNameEl.textContent = currentUser.name;
+    profileDescriptionEl.textContent = currentUser.about;
   })
   .catch(console.error);
 
@@ -81,9 +84,13 @@ const deleteModalCloseBtn = deleteModal.querySelector(".modal__close-btn");
 const deleteModalCancelBtn = deleteModal.querySelector(
   "#delete__form_cancel_btn",
 );
+const deleteModalDeleteBtn = deleteModal.querySelector(
+  "#delete__form_delete_btn",
+);
 
 let selectedCard;
 let selectedCardId;
+let userInfo;
 
 const cardTemplate = document
   .querySelector("#card-template")
@@ -120,13 +127,17 @@ function getCardElement(data) {
 
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
+  setButtonText(deleteModalDeleteBtn, false, "Saving...", "Delete", true);
   api
     .deleteCard(selectedCardId)
     .then(() => {
       selectedCard.remove();
       closeModal(deleteModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(deleteModalDeleteBtn, false, "Saving...", "Delete", false);
+    });
 }
 
 function handleDeleteCard(cardElement, cardId) {
@@ -136,20 +147,13 @@ function handleDeleteCard(cardElement, cardId) {
 }
 
 function handleLike(evt, cardId) {
-  // check whether card is currently liked or not
   const cardElement = evt.target.closest(".card");
   const isLiked = evt.target.classList.contains("card__like-btn_active");
 
-  // call the changeLikeStatus passing it the arguments
   api
     .changelikeStatus(cardId, isLiked)
     .then((newCardData) => {
-      // handle the response
       evt.target.classList.toggle("card__like-btn_active");
-
-      // Update the like count on the DOM
-      // const likeCountElement = cardElement.querySelector(".card__like-count");
-      // likeCountElement.textContent = newCardData.likes.length;
     })
     .catch(console.error);
 }
@@ -218,8 +222,8 @@ deleteModalCancelBtn.addEventListener("click", function () {
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
-  const newPostSubmitBtn = evt.submitter;
-  setButtonText(newPostSubmitBtn, true);
+  const profileSubmitBtn = evt.submitter;
+  setButtonText(profileSubmitBtn, true);
 
   api
     .editUserInfo({
@@ -233,7 +237,7 @@ function handleEditProfileSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(newPostSubmitBtn, false);
+      setButtonText(profileSubmitBtn, false);
     });
 }
 
@@ -249,31 +253,32 @@ function handleNewPostSubmit(evt) {
     .then((cardData) => {
       const cardElement = getCardElement(cardData);
       cardsList.prepend(cardElement);
+      newPostForm.reset();
+      disableButton(newPostSubmitBtn, settings);
+      closeModal(newPostModal);
     })
     .catch(console.error)
     .finally(() => {
       setButtonText(newPostSubmitBtn, false);
     });
-  newPostForm.reset();
-  disableButton(newPostSubmitBtn, settings);
-  closeModal(newPostModal);
 }
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
-  const newPostSubmitBtn = evt.submitter;
-  setButtonText(newPostSubmitBtn, true);
+  const avatarSubmitBtn = evt.submitter;
+  setButtonText(avatarSubmitBtn, true);
   api
     .editAvatarInfo(avatarInput.value)
-    .then((data) => {
-      document.querySelector(".profile__avatar").src = data.avatar;
+    .then((updatedUser) => {
+      userInfo = updatedUser;
+      avatarProfile.src = updatedUser.avatar;
       avatarForm.reset();
       disableButton(avatarSubmitBtn, settings);
       closeModal(avatarModal);
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(newPostSubmitBtn, false);
+      setButtonText(avatarSubmitBtn, false);
     });
 }
 

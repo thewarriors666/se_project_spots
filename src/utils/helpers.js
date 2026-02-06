@@ -3,10 +3,19 @@ export function setButtonText(
   isLoading,
   loadingText = "Saving...",
   defaultText = "Save",
+  isDeleting,
+  deleteText = "Deleting...",
+  defaultDeleteText = "Delete",
 ) {
-  if (isLoading) {
-    btn.textContent = loadingText;
-  } else {
-    btn.textContent = defaultText;
+  const text = isLoading
+    ? loadingText
+    : isDeleting
+      ? deleteText
+      : defaultText;
+
+  if (btn) {
+    btn.textContent = text;
   }
+
+  return text;
 }

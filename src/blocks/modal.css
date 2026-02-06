@@ -78,6 +78,13 @@
   height: 172px;
 }
 
+#delete-modal__container .modal__close-btn {
+  top: -0px;
+  right: -40px;
+  background-color: transparent;
+  background-image: url("../images/closebtn-white.svg");
+}
+
 #delete__form_modal_title {
   display: flex;
   justify-content: center;
@@ -92,6 +99,12 @@
 
 #delete__form_delete_btn {
   background-color: red;
+}
+
+#delete__form_cancel_btn {
+  border: 1px solid #212121;
+  background-color: transparent;
+  color: #212121;
 }
 
 .modal__container {
@@ -224,6 +237,12 @@
     align-items: center;
   }
 
+  #delete-modal__container .modal__close-btn {
+    top: -50px;
+    right: 8px;
+    z-index: 1;
+  }
+
   #delete__form_submit-btns {
     display: flex;
     flex-direction: column;
@@ -234,6 +253,9 @@
   #delete__form_modal_title {
     display: flex;
     justify-content: center;
+    text-align: center;
+    padding: 0 8px;
+    margin: 0 0 16px;
   }
 }
 
