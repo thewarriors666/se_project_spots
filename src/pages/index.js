@@ -6,6 +6,8 @@ import plusImg from "../images/plus.svg";
 import {
   enableValidation,
   resetValidation,
+  enableButton,
+  disableButton,
   settings,
 } from "../scripts/validation.js";
 import Api from "../utils/Api.js";
@@ -75,6 +77,10 @@ const previewCaptionEl = previewModal.querySelector(".modal__caption");
 
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
+const deleteModalCloseBtn = deleteModal.querySelector(".modal__close-btn");
+const deleteModalCancelBtn = deleteModal.querySelector(
+  "#delete__form_cancel_btn",
+);
 
 let selectedCard;
 let selectedCardId;
@@ -94,7 +100,7 @@ function getCardElement(data) {
   cardTitleEl.textContent = data.name;
 
   const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
-  cardLikeBtnEl.addEventListener("click", () => handleLike(cardId, isLiked));
+  cardLikeBtnEl.addEventListener("click", (evt) => handleLike(evt, data._id));
 
   cardLikeBtnEl.classList.toggle("card__like-btn_active", data.isLiked);
 
@@ -129,7 +135,7 @@ function handleDeleteCard(cardElement, cardId) {
   openModal(deleteModal);
 }
 
-function handleLike(evt, data) {
+function handleLike(evt, cardId) {
   // check whether card is currently liked or not
   const cardElement = evt.target.closest(".card");
   const isLiked = evt.target.classList.contains("card__like-btn_active");
@@ -142,8 +148,8 @@ function handleLike(evt, data) {
       evt.target.classList.toggle("card__like-btn_active");
 
       // Update the like count on the DOM
-      const likeCountElement = cardElement.querySelector(".card__like-count");
-      likeCountElement.textContent = newCardData.likes.length;
+      // const likeCountElement = cardElement.querySelector(".card__like-count");
+      // likeCountElement.textContent = newCardData.likes.length;
     })
     .catch(console.error);
 }
@@ -200,6 +206,14 @@ avatarModalBtn.addEventListener("click", function () {
 
 avatarModalCloseBtn.addEventListener("click", function () {
   closeModal(avatarModal);
+});
+
+deleteModalCloseBtn.addEventListener("click", function () {
+  closeModal(deleteModal);
+});
+
+deleteModalCancelBtn.addEventListener("click", function () {
+  closeModal(deleteModal);
 });
 
 function handleEditProfileSubmit(evt) {

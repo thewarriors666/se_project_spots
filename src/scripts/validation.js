@@ -47,12 +47,12 @@ export const resetValidation = (formEl, inputList, config) => {
   });
 };
 
-const enableButton = (buttonEl, config) => {
+export const enableButton = (buttonEl, config) => {
   buttonEl.disabled = false;
   buttonEl.classList.remove(config.inactiveButtonClass);
 };
 
-const disableButton = (buttonEl, config) => {
+export const disableButton = (buttonEl, config) => {
   buttonEl.disabled = true;
   console.log(config);
   buttonEl.classList.add(config.inactiveButtonClass);
