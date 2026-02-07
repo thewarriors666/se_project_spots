@@ -45,8 +45,9 @@
 .modal__close-btn_type_preview {
   top: 0;
   right: -40.5px;
-  background: transparent;
   opacity: 1;
+  background-color: transparent;
+  background-image: url("../images/closebtn-white.svg");
 }
 
 .modal__close-btn_type_preview:hover {
@@ -98,7 +99,7 @@
 }
 
 #delete__form_delete_btn {
-  background-color: red;
+  background-color: #ff0000;
 }
 
 #delete__form_cancel_btn {

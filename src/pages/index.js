@@ -1,7 +1,8 @@
 import "./index.css";
-import { setButtonText } from "../utils/helpers.js";
+import { setSaveButtonText, setDeleteButtonText } from "../utils/helpers.js";
 import logoImg from "../images/logo.svg";
 import pencilImg from "../images/pencil.svg";
+import pencilWhiteImg from "../images/Pencilwhite.svg";
 import plusImg from "../images/plus.svg";
 import {
   enableValidation,
@@ -38,6 +39,7 @@ api
 
 document.querySelector(".header__logo").src = logoImg;
 document.querySelector(".profile__pencilImg").src = pencilImg;
+document.querySelector(".pencilWhiteicon").src = pencilWhiteImg;
 document.querySelector(".plus__icon").src = plusImg;
 
 const editProfileBtn = document.querySelector(".profile__edit-btn");
@@ -127,7 +129,7 @@ function getCardElement(data) {
 
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
-  setButtonText(deleteModalDeleteBtn, false, "Saving...", "Delete", true);
+  setDeleteButtonText(deleteModalDeleteBtn, true);
   api
     .deleteCard(selectedCardId)
     .then(() => {
@@ -136,7 +138,7 @@ function handleDeleteSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(deleteModalDeleteBtn, false, "Saving...", "Delete", false);
+      setDeleteButtonText(deleteModalDeleteBtn, false);
     });
 }
 
@@ -223,7 +225,7 @@ deleteModalCancelBtn.addEventListener("click", function () {
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
   const profileSubmitBtn = evt.submitter;
-  setButtonText(profileSubmitBtn, true);
+  setSaveButtonText(profileSubmitBtn, true);
 
   api
     .editUserInfo({
@@ -237,14 +239,14 @@ function handleEditProfileSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(profileSubmitBtn, false);
+      setSaveButtonText(profileSubmitBtn, false);
     });
 }
 
 function handleNewPostSubmit(evt) {
   evt.preventDefault();
   const newPostSubmitBtn = evt.submitter;
-  setButtonText(newPostSubmitBtn, true);
+  setSaveButtonText(newPostSubmitBtn, true);
   api
     .postUserCard({
       name: newPostCaptionInputEl.value,
@@ -259,14 +261,14 @@ function handleNewPostSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(newPostSubmitBtn, false);
+      setSaveButtonText(newPostSubmitBtn, false);
     });
 }
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
   const avatarSubmitBtn = evt.submitter;
-  setButtonText(avatarSubmitBtn, true);
+  setSaveButtonText(avatarSubmitBtn, true);
   api
     .editAvatarInfo(avatarInput.value)
     .then((updatedUser) => {
@@ -278,7 +280,7 @@ function handleAvatarSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(avatarSubmitBtn, false);
+      setSaveButtonText(avatarSubmitBtn, false);
     });
 }
 
