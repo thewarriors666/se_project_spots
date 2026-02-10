@@ -19,6 +19,6 @@ This webpage is deployed on github pages
 
 ## Video Explenation
 
-This is a link to a video I made explaining a few things about the website, project and things that went into it.
+This is a link to a YouTube video I made explaining a few things about the website and how it works and the work that went into it.
 
-- [Deplyment Link](https://drive.google.com/file/d/1I2-lmL3Rllt0rJRX5npHU-g0aDi8Vl3J/view?usp=sharing)
+- [Deplyment Link](https://www.youtube.com/watch?v=3ptDksR64h4)
