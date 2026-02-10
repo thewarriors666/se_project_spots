@@ -8,6 +8,7 @@ Spots is a social media platform for anyone who would like to post pictures and 
 
 -HTML
 -CSS
+-Javascript
 -Responsive Design
 
 ## Deployment
